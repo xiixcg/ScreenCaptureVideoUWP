@@ -2,6 +2,7 @@
 using Microsoft.Graphics.Canvas.UI.Composition;
 using System;
 using System.Numerics;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Graphics;
@@ -31,6 +32,7 @@ namespace ScreenCaptureTest {
 		private Compositor _compositor;
 		private CompositionDrawingSurface _surface;
 		private CanvasBitmap _currentFrame;
+		private CanvasBitmap _lastScreenshotFrame;
 
 		public MainPage() {
 			this.InitializeComponent();
@@ -47,7 +49,7 @@ namespace ScreenCaptureTest {
 			_compositor = Window.Current.Compositor;
 
 			_surface = _compositionGraphicsDevice.CreateDrawingSurface(
-				new Size(200, 200),
+				new Size(400, 400),
 				DirectXPixelFormat.B8G8R8A8UIntNormalized,
 				DirectXAlphaMode.Premultiplied);    // This is the only value that currently works with
 													// the composition APIs.
@@ -55,8 +57,8 @@ namespace ScreenCaptureTest {
 			var visual = _compositor.CreateSpriteVisual();
 			visual.RelativeSizeAdjustment = Vector2.One;
 			var brush = _compositor.CreateSurfaceBrush(_surface);
-			brush.HorizontalAlignmentRatio = 0.2f;
-			brush.VerticalAlignmentRatio = 0.2f;
+			brush.HorizontalAlignmentRatio = 0.5f;
+			brush.VerticalAlignmentRatio = 0.5f;
 			brush.Stretch = CompositionStretch.Uniform;
 			visual.Brush = brush;
 			ElementCompositionPreview.SetElementChildVisual(this, visual);
@@ -145,7 +147,6 @@ namespace ScreenCaptureTest {
 				_currentFrame = canvasBitmap;
 
 				// Helper that handles the drawing for us.
-				FillSurfaceWithBitmap(canvasBitmap);
 			}
 
 			// This is the device-lost convention for Win2D.
@@ -197,6 +198,8 @@ namespace ScreenCaptureTest {
 
 		private async void ScreenshotButton_ClickAsync(object sender, RoutedEventArgs e) {
 			await SaveImageAsync($"{DateTime.Now.ToString("MMDDyyyyHHmmssfff")}.png", _currentFrame);
+			_lastScreenshotFrame = _currentFrame;
+			FillSurfaceWithBitmap(_lastScreenshotFrame);
 		}
 
 		private async Task SaveImageAsync(string filename, CanvasBitmap frame) {
