@@ -57,8 +57,8 @@ namespace ScreenCaptureTest {
 			var visual = _compositor.CreateSpriteVisual();
 			visual.RelativeSizeAdjustment = Vector2.One;
 			var brush = _compositor.CreateSurfaceBrush(_surface);
-			brush.HorizontalAlignmentRatio = 0.5f;
-			brush.VerticalAlignmentRatio = 0.5f;
+			brush.HorizontalAlignmentRatio = 1.0f;
+			brush.VerticalAlignmentRatio = 1.0f;
 			brush.Stretch = CompositionStretch.Uniform;
 			visual.Brush = brush;
 			ElementCompositionPreview.SetElementChildVisual(this, visual);
@@ -163,7 +163,8 @@ namespace ScreenCaptureTest {
 		}
 
 		private void FillSurfaceWithBitmap(CanvasBitmap canvasBitmap) {
-			CanvasComposition.Resize(_surface, canvasBitmap.Size);
+			Size smallerSize = new Size(canvasBitmap.Size.Width * 2, canvasBitmap.Size.Height * 2);
+			CanvasComposition.Resize(_surface, smallerSize);
 
 			using(var session = CanvasComposition.CreateDrawingSession(_surface)) {
 				session.Clear(Colors.Transparent);
