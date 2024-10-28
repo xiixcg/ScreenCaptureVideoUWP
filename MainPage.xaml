@@ -13,8 +13,10 @@
 			<ColumnDefinition Width="400" />
 		</Grid.ColumnDefinitions>
 		<Grid x:Name="ControlsGrid" Grid.Column="0">
-			<Button x:Name="start_button" HorizontalAlignment="Left" VerticalAlignment="Top" Background="DarkGray" Margin="5" Padding="5" FontSize="12" Content="StartCapture" Click="Button_ClickAsync"/>
-			<Button x:Name="stop_button" HorizontalAlignment="Left" VerticalAlignment="Center" Background="DarkGray" Margin="5" Padding="5" FontSize="12" Content="TakeScreenshot" Click="ScreenshotButton_ClickAsync"/>
+			<Button x:Name="start_button" HorizontalAlignment="Left" VerticalAlignment="Top" Background="DarkGray" Margin="5" Padding="5" FontSize="12" Content="StartCapture" />
+			<Button x:Name="stop_button" HorizontalAlignment="Left" VerticalAlignment="Center" Background="DarkGray" Margin="5" Padding="5" FontSize="12" Content="TakeScreenshot" />
+			<!--<Button x:Name="start_button" HorizontalAlignment="Left" VerticalAlignment="Top" Background="DarkGray" Margin="5" Padding="5" FontSize="12" Content="StartCapture" Click="Button_ClickAsync"/>
+			<Button x:Name="stop_button" HorizontalAlignment="Left" VerticalAlignment="Center" Background="DarkGray" Margin="5" Padding="5" FontSize="12" Content="TakeScreenshot" Click="ScreenshotButton_ClickAsync"/>-->
 		</Grid>
 	</Grid>
 </Page>
