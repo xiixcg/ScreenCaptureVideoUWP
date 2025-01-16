@@ -282,6 +282,10 @@ namespace ScreenCaptureTest {
 			_currentFrame?.Dispose();
 		}
 
+		private void Button_StopCaptureClickAsync(object sender, RoutedEventArgs e) {
+			Stop();
+		}
+
 
 		//public async Task StartCaptureAsync() {
 		//	// The GraphicsCapturePicker follows the same pattern the
