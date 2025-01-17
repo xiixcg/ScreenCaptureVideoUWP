@@ -7,8 +7,8 @@
     <ProjectGuid>{D8844DF1-D0C6-4960-A021-BCC6A2499982}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ScreenCaptureVideo</RootNamespace>
-    <AssemblyName>ScreenCaptureVideo</AssemblyName>
+    <RootNamespace>ScreenCaptureVideoUWP</RootNamespace>
+    <AssemblyName>ScreenCaptureVideoUWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.22000.0</TargetPlatformVersion>
